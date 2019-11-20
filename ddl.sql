@@ -60,3 +60,5 @@ ALTER TABLE products ADD PRIMARY KEY (product_id);
 ALTER TABLE sales ADD COLUMN product_id varchar(100);
 
 ALTER TABLE sales ADD FOREIGN KEY (product_id) REFERENCES products(product_id);
+
+ALTER TABLE products ADD COLUMN id SERIAL;
