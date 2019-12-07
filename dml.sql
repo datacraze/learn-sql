@@ -29,10 +29,11 @@ DELETE FROM products WHERE product_id = 999::varchar;
 TRUNCATE TABLE products RESTART IDENTITY CASCADE;
 ALTER TABLE products ADD COLUMN random_desc TEXT;
 
+DROP SEQUENCE IF EXISTS products_insert;
 CREATE TEMP SEQUENCE products_insert MINVALUE 0 START WITH 0;
 
 INSERT INTO products (product_id, product_name, product_category, random_desc)
-select '10'||nextval('products_insert')::TEXT,
+select nextval('products_insert')::TEXT,
         'Product '||floor(random() * 10 + 1)::int,
         'Category '||floor(random() * 10 + 1)::int,
         left(md5(i::text), 15)
