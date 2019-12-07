@@ -1,6 +1,0 @@
-
-
--- DUPLICATES
-SELECT * 
-FROM sales
-LEFT JOIN

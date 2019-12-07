@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS sales (
     id SERIAL,
     sales_date TIMESTAMP,
     sales_amount NUMERIC(38,2),
-    sales_qty INTEGER
+    sales_qty INTEGER,
     discount NUMERIC(38,2)
 );
 

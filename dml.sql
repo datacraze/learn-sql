@@ -26,7 +26,7 @@ UPDATE products SET product_name = 'Product 4' WHERE product_name = 'Product 3';
 DELETE FROM products WHERE product_id = 999::varchar;
 
 -- ADD SOME DATA
-TRUNCATE TABLE products CASCADE RESTART IDENTITY;
+TRUNCATE TABLE products RESTART IDENTITY CASCADE;
 ALTER TABLE products ADD COLUMN random_desc TEXT;
 
 CREATE TEMP SEQUENCE products_insert MINVALUE 0 START WITH 0;
@@ -38,12 +38,27 @@ select '10'||nextval('products_insert')::TEXT,
         left(md5(i::text), 15)
    from generate_series(1, 100) s(i);
    
-TRUNCATE TABLE sales CASCADE RESTART IDENTITY;
-ALTER TABLE sales ADD COLUMN sales_qty INTEGER;
-   
-INSERT INTO sales (sales_date, sales_amount, sales_qty, products_id)
+TRUNCATE TABLE sales RESTART IDENTITY CASCADE;
+
+INSERT INTO sales (sales_date, sales_amount, sales_qty, product_id)
  select NOW() + (random() * (interval '90 days')) + '30 days',
         random() * 10 + 1,
         floor(random() * 10 + 1)::int,
         floor(random() * 100 + 1)::int
    from generate_series(1, 10000) s(i);
+
+
+--- LOCKING
+
+-- CHANGE AUTCOMMIT IN OPTIONS TO FALSE
+CREATE TABLE test_locking (id int); 
+
+INSERT INTO test_locking (id) values(5);
+
+BEGIN;
+SELECT * from test_locking;
+
+COMMIT;
+
+-- SECOND WINDOW
+SELECT * FROM test_locking;
