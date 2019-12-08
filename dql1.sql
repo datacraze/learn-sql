@@ -16,8 +16,6 @@ select count(id)
 from sales 
 where sales_amount >10;
 
--- UNION vs UNION ALL
-
 -- LIMIT & OFFSET
 select *
 from sales 
@@ -30,6 +28,11 @@ offset 5;
 -- GROUP BY 
 select sum(sales_amount)
 from sales ;
+
+-- UPS?
+select sales_qty, sum(sales_amount)
+from sales ;
+
 
 -- WHAT IS WRONG HERE?
 select extract(year from sales_date)||extract(month from sales_date),

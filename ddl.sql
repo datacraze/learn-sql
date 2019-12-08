@@ -53,6 +53,15 @@ DROP TABLE sales;
 DROP TABLE sales CASCADE;
 SELECT * FROM sales_year2019; -- ?
 
+-- RECREATE SALES TABLE
+CREATE TABLE IF NOT EXISTS sales (
+    id SERIAL,
+    sales_date TIMESTAMP,
+    sales_amount NUMERIC(38,2),
+    sales_qty INTEGER,
+    discount NUMERIC(38,2)
+);
+
 -- CONSTRAINTS
 
 ALTER TABLE products ADD PRIMARY KEY (product_id);
