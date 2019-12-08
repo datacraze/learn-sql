@@ -1,12 +1,12 @@
 DO $atw$
 DECLARE
     counter INTEGER :=0;
-    users text[] := '{ge_sql_1, ge_sql_2, ge_sql_3, ge_sql_4, ge_sql_5, ge_sql_6, ge_sql_7, ge_sql_8, ge_sql_9, ge_sql_10}';
+    users text[] := '{ge_sql_1, ge_sql_2, ge_sql_3, ge_sql_4, ge_sql_5, ge_sql_6, ge_sql_7, ge_sql_8, ge_sql_9, ge_sql_10, kbm}';
     object_tc TEXT;
     db_name TEXT := 'trainings';
  BEGIN
     LOOP 
-      EXIT WHEN counter = 10 ; 
+      EXIT WHEN counter = 11 ; 
       counter := counter + 1 ; 
 
       object_tc := users[counter];
@@ -17,7 +17,7 @@ DECLARE
         WHERE  usename = object_tc) THEN
 
         EXECUTE 'CREATE USER '|| object_tc || ' WITH LOGIN PASSWORD ''' || object_tc || '''  NOSUPERUSER INHERIT NOREPLICATION';
-		EXECUTE 'CREATE SCHEMA IF NOT EXISTS ' || object_tc;
+		    EXECUTE 'CREATE SCHEMA IF NOT EXISTS ' || object_tc;
            
         END IF;
        

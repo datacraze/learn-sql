@@ -14,6 +14,10 @@ select
     md5(random()::text)
 from generate_series(1, 1000000) s(i);
 
+select count(*) from products_performance;
+
+select * from products_performance limit 1;
+
 EXPLAIN ANALYZE 
 SELECT * FROM products_performance WHERE product_id = 'c4ca4238a0'; -- GET ONE example from data
 
