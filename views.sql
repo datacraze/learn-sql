@@ -1,0 +1,13 @@
+--- VIEW
+CREATE OR REPLACE VIEW sales_2019 
+AS
+SELECT * 
+FROM sales 
+WHERE extract(YEAR FROM sales_date) = 2019;
+
+--- MATERIALIZED VIEW
+CREATE MATERIALIZED VIEW mv_sales_2019
+AS
+SELECT * 
+FROM sales 
+WHERE extract(YEAR FROM sales_date) = 2019;
