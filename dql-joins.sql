@@ -69,6 +69,10 @@ FULL OUTER JOIN basket_b b ON a.fruit = b.fruit;
 -- WHAT ABOUT CROSS JOIN?
 select * from basket_a, basket_b;
 
+-- SELF JOIN 
+http://www.postgresqltutorial.com/postgresql-self-join/
+
+
 ------ OUR DATA
 
 insert into products (product_id, product_name, product_category)
