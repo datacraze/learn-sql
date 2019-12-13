@@ -6,6 +6,11 @@ INSERT INTO products (product_id, product_name, product_category) VALUES ('104',
 INSERT INTO products (product_id, product_name, product_category) VALUES ('105', 'Product 3', 'Category 2');
 INSERT INTO products (product_id, product_name, product_category) VALUES ('999', 'Product 999', 'Category 999');
 
+-- WHAT HAPPEND ?
+
+-- REMEMBER ABOUT TRANSACTIONS (COMMIT / ROLLBACK)
+ALTER TABLE products DROP CONSTRAINT unq_product_name;
+
 -- UPDATE
 
 UPDATE products SET product_name = 'Product 4';

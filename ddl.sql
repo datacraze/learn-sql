@@ -1,5 +1,5 @@
 -- MAKES OUR LIFE EASIER
-SET search_path TO ge_sql_X; -- YOUR USER HERE
+SET search_path TO learn_sql_X; -- YOUR USER HERE
 
 -- CREATE TABLE
 CREATE TABLE sales (
@@ -71,3 +71,19 @@ ALTER TABLE sales ADD COLUMN product_id varchar(100);
 ALTER TABLE sales ADD FOREIGN KEY (product_id) REFERENCES products(product_id);
 
 ALTER TABLE products ADD COLUMN id SERIAL;
+
+
+-- UNIQUE CONSTRAINTS
+ALTER TABLE products ADD CONSTRAINT unq_product_name UNIQUE(product_name);
+
+
+CREATE TABLE customers (
+    ID SERIAL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
+
+
+-- SHOULD WE USE CONSTRAINTS, TO WHAT EXTENT? 
