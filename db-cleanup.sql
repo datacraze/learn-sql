@@ -1,19 +1,13 @@
 DO $atw$
 DECLARE
     counter INTEGER :=0;
-    users text[] := '{learn_sql_1, learn_sql_2, learn_sql_3, learn_sql_4, learn_sql_5, 
-                      learn_sql_6, learn_sql_7, learn_sql_8, learn_sql_9, learn_sql_10, 
-                      learn_sql_11, learn_sql_12, learn_sql_13, learn_sql_14, learn_sql_15, 
-                      learn_sql_16, learn_sql_17, learn_sql_18, learn_sql_19, learn_sql_20,
-                      kbm}';
     object_tc TEXT;
     db_name TEXT := 'trainings';
  BEGIN
     LOOP 
-      EXIT WHEN counter = 21 ; 
-      counter := counter + 1 ; 
-
-      object_tc := users[counter];
+      EXIT WHEN counter = 51; 
+      object_tc := 'learn_sql_'||counter;
+      counter := counter + 1 ;
      
       IF EXISTS (
         SELECT 1
